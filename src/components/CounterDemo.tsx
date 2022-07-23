@@ -9,8 +9,11 @@ function CounterDemo(): JSX.Element {
   };
 
   const handleReset = () => {
+    queueRerenderWithNewCounterValue(0)
     // TODO reset counter to 0 here
   }
+
+  const handleAddFive = () => queueRerenderWithNewCounterValue(counterValueFromCurrentRender + 5);
 
   return (
     <>
@@ -19,6 +22,13 @@ function CounterDemo(): JSX.Element {
       <button onClick={handleAddOne}>+1</button>
       <hr />
       <button onClick={handleReset}>Reset counter</button>
+      <hr />
+      <button onClick = {function (){queueRerenderWithNewCounterValue(counterValueFromCurrentRender - 5)}} > -5 </button>
+      <hr />
+      <button onClick = {() => {queueRerenderWithNewCounterValue(counterValueFromCurrentRender - 1)}}> -1 </button>
+      <hr />
+      <button onClick ={handleAddFive}> +5 </button>
+      <hr />
     </>
   );
 }
